@@ -1,0 +1,40 @@
+/*!
+ * 960gs_lite v0.1 (http://github.com/Nalis/css-libs)
+ * GPLv3 Nalis Ltd
+ */
+
+/*
+ * It is inspired from the 960 grid system but it has really the basic classes and it is a little lighter.
+ */
+
+@mixin grid-n($width) {
+  .grid-style {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .grid-container .grid-#{$width} {
+    display: inline-block;
+    vertical-align: top;
+    width: percentage(($width * 1.0)/100);
+  }
+}
+
+@mixin grid-generator {
+  .grid-container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @for $factor from 1 through 20 {
+    @include grid-n($factor * 5);
+  }
+
+  .grid-container .grid-100 {
+    clear: both;
+  }
+}
+
+@include grid-generator;
+
